@@ -20,7 +20,7 @@ div {
 }
 
 .origin {
-    background-color: green;
+    background-image: url("./assets/textures/mountainRock.png");
 }
 
 .character {
@@ -28,6 +28,11 @@ div {
     border-radius: 50%;
 }
 
-div.lostArk {
+.end {
+    background-image: url("./assets/textures/mountainRock.png");
+}
+
+.lostArk {
     background-color: yellow;
+    border-radius: 50%;
 }
