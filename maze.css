@@ -4,17 +4,30 @@ main {
     flex-wrap: wrap;
 }
 
-div.tile {
+div {
     width: 20px;
     height: 20px;
     display: flex;
-    
 }
 
-div.tile.wall{
-    background-color: darkgrey;
+.wall {
+    background-image: url("./assets/textures/stone.png");
+    background-size: contain;
 }
 
-div.tile.path{
+.path {
+    background-image: url("./assets/textures/mountainRock.png");
+}
+
+.origin {
     background-color: green;
+}
+
+.character {
+    background-color: tomato;
+    border-radius: 50%;
+}
+
+div.lostArk {
+    background-color: yellow;
 }
