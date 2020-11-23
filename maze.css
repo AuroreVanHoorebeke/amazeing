@@ -1,0 +1,12 @@
+div.tile {
+    width: 20px;
+    height: 20px;
+}
+
+div.tile.wall{
+    background-color: darkgrey;
+}
+
+div.tile.path{
+    background-color: green;
+}
