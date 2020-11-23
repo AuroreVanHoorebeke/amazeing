@@ -1,6 +1,14 @@
+main {
+    width: 260px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
 div.tile {
     width: 20px;
     height: 20px;
+    display: flex;
+    
 }
 
 div.tile.wall{
