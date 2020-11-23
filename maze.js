@@ -21,7 +21,7 @@ for (let i = 0; i < multiline.length; i++) {
     main.appendChild(tile);
 
     tile.textContent = multiline[i].split(''); // ['l', 'i', 'n', 'e', '1']
-    
+
     switch (multiline[i]) {
         case "*":
             console.log("mur");

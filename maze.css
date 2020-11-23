@@ -17,15 +17,19 @@ div {
 
 .path {
     background-image: url("./assets/textures/mountainRock.png");
+    background-size: contain;
 }
 
 .origin {
     background-image: url("./assets/textures/mountainRock.png");
+    background-size: contain;
 }
 
 .character {
-    background-color: tomato;
-    border-radius: 50%;
+    background-image: url("./assets/textures/indianaJones.png");
+    background-size: contain;
+    /* background-color: tomato; */
+    /* border-radius: 50%; */
 }
 
 .end {
