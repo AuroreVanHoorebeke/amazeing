@@ -1,7 +1,18 @@
 const main = document.querySelector("main");
 
-const multiline = `***********.**S.....**.*.T*****.....*.******.***.*.******.*****.******.*****.******.......******.********.........****.******...***....********`;
+const multiline = `***********.*
+*S.....**.*.T
+*****.....*.*
+*****.***.*.*
+*****.*****.*
+*****.*****.*
+*****.......*
+*****.*******
+*.........***
+*.******...**
+*....********`;
 
+console.log(multiline.split('\n'))
 console.log(multiline);
 
 for (let i = 0; i < multiline.length; i++) {
@@ -10,7 +21,7 @@ for (let i = 0; i < multiline.length; i++) {
     main.appendChild(tile);
 
     tile.textContent = multiline[i].split(''); // ['l', 'i', 'n', 'e', '1']
-
+    
     switch (multiline[i]) {
         case "*":
             console.log("mur");
@@ -32,39 +43,44 @@ for (let i = 0; i < multiline.length; i++) {
             tile.className = "end";
             tile.textContent = "";
             break;
+        case '\n':
+            tile.style.display = "none";
+            console.log("ya riennnnnn");
     }
 };
 //Character and end divs
 const character = document.createElement("div");
 character.className = "character";
-document.querySelector("body > main > div:nth-child(15)").appendChild(character);
+document.querySelector("body > main > div:nth-child(16)").appendChild(character);
 
 const lostArk = document.createElement("div");
 lostArk.className = "lostArk";
-document.querySelector("body > main > div:nth-child(26)").appendChild(lostArk);
-
+document.querySelector("body > main > div:nth-child(27)").appendChild(lostArk);
+let pos = 16;
 //Event listener
 document.body.addEventListener("keydown", function move(e) {
     console.log(e.code)
-    let pos = 15;
+
     if (e.code === "ArrowLeft") {
         pos--;
         document.querySelector("body > main > div:nth-child(" + pos + ")").appendChild(character);
         return pos;
     }
-
     if (e.code === "ArrowRight") {
     pos++;
     document.querySelector("body > main > div:nth-child(" + pos + ")").appendChild(character);
-    return pos;} 
-    else if (e.code === "ArrowUp") {
-    pos -= 13;
+    return pos;
+    }
+    
+    if (e.code === "ArrowUp") {
+    pos -= 14;
     document.querySelector("body > main > div:nth-child(" + pos + ")").appendChild(character);
-    return pos;} 
-    else if (e.code === "ArrowDown") {
-    pos += 13;
-    document.querySelector("body > main > div:nth-child(" + pos + ")").appendChild(character);
-    return pos;}
+    return pos;
+    }
 
-    move(e);
+    if (e.code === "ArrowDown") {
+    pos += 14;
+    document.querySelector("body > main > div:nth-child(" + pos + ")").appendChild(character);
+    return pos;
+    }
 });
