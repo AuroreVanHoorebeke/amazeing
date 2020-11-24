@@ -1,7 +1,6 @@
 const main = document.querySelector("main");
 
-const multiline = 
-`***********.*
+const boardPattern = `***********.*
 *S.....**.*.T
 *****.....*.*
 *****.***.*.*
@@ -13,16 +12,29 @@ const multiline =
 *.******...**
 *....********`;
 
-multiline.split('\n');
+boardPattern.split('\n');
 
-for (let i = 0; i < multiline.length; i++) { //corriger multiling.length-1
+/**
+ * Setting up the game
+ */
+function setup(){
+    drawBoard();
+}
+
+setup();
+/**
+ * Uses boardPattern to generate divs with different classes and draw the board
+ * */
+function drawBoard(){
+for (let i = 0; i < boardPattern.length; i++) { //corriger multiling.length-1
+    
     const tile = document.createElement("div");
     tile.className = "tile";
     main.appendChild(tile);
 
-    tile.textContent = multiline[i].split('');
+    tile.textContent = boardPattern[i].split('');
 
-    switch (multiline[i]) {
+    switch (boardPattern[i]) {
         case "*":
             tile.className = "wall";
             tile.textContent = "";
@@ -43,18 +55,19 @@ for (let i = 0; i < multiline.length; i++) { //corriger multiling.length-1
             tile.style.display = "none";
     }
 };
-//Character and end divs
+}
+
 const character = document.createElement("div");
 character.className = "character";
-document.querySelector("body > main > div:nth-child(16)").appendChild(character);
+document.querySelector("body > main > div.origin").appendChild(character)
 
- const lostArk = document.createElement("div");
- lostArk.className = "lostArk";
- document.querySelector("body > main > div:nth-child(27)").appendChild(lostArk);
+const lostArk = document.createElement("div");
+lostArk.className = "lostArk";
+document.querySelector("body > main > div:nth-child(27)").appendChild(lostArk);
+
 
 let pos = 16;
 let score = 0;
-
 //Event listener
 document.body.addEventListener("keydown", function move(e) {
     // function checkWall (){} ;  
