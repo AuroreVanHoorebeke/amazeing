@@ -1,6 +1,7 @@
 const main = document.querySelector("main");
 
-const multiline = `***********.*
+const multiline = 
+`***********.*
 *S.....**.*.T
 *****.....*.*
 *****.***.*.*
@@ -14,12 +15,12 @@ const multiline = `***********.*
 
 multiline.split('\n');
 
-for (let i = 0; i < multiline.length; i++) {
+for (let i = 0; i < multiline.length; i++) { //corriger multiling.length-1
     const tile = document.createElement("div");
     tile.className = "tile";
     main.appendChild(tile);
 
-    tile.textContent = multiline[i].split(''); // ['l', 'i', 'n', 'e', '1']
+    tile.textContent = multiline[i].split('');
 
     switch (multiline[i]) {
         case "*":
@@ -38,8 +39,8 @@ for (let i = 0; i < multiline.length; i++) {
             tile.className = "end";
             tile.textContent = "";
             break;
-        case '\n':
-            tile.style.display = "none";
+        case '\n': //delete cette ligne d'une manière ou d'une autre
+             tile.style.display = "none";
     }
 };
 //Character and end divs
@@ -49,33 +50,49 @@ document.querySelector("body > main > div:nth-child(16)").appendChild(character)
 
 const lostArk = document.createElement("div");
 lostArk.className = "lostArk";
-document.querySelector("body > main > div:nth-child(27)").appendChild(lostArk);
+document.querySelector("body > main > div:nth-child(26)").appendChild(lostArk);
 
 let pos = 16;
 
 //Event listener
 document.body.addEventListener("keydown", function move(e) {
 
-    if (e.code === "ArrowLeft") {
+    switch (e.code){
+    case "ArrowLeft":
         pos-=1;
+        if(document.querySelector("body > main > div:nth-child(" + pos + ")").classList.contains("wall")){
+            alert("Ouch");
+        } else {
         document.querySelector("body > main > div:nth-child(" + pos + ")").appendChild(character);
-        return pos;
-    }
-    if (e.code === "ArrowRight") {
+        }
+        break;
+
+    case "ArrowRight":
         pos+=1;
+        if(document.querySelector("body > main > div:nth-child(" + pos + ")").classList.contains("wall")){
+            alert("Ouch");
+        } else {
         document.querySelector("body > main > div:nth-child(" + pos + ")").appendChild(character);
-        return pos;
-    }
+        }
+        break;
 
-    if (e.code === "ArrowUp") {
+    case "ArrowUp":
         pos -= 14;
+        if(document.querySelector("body > main > div:nth-child(" + pos + ")").classList.contains("wall")){
+            alert("Ouch");
+        } else {
         document.querySelector("body > main > div:nth-child(" + pos + ")").appendChild(character);
-        return pos;
-    }
+        }
+        break;
 
-    if (e.code === "ArrowDown") {
+    case "ArrowDown":
         pos += 14;
+        if(document.querySelector("body > main > div:nth-child(" + pos + ")").classList.contains("wall")){
+            alert("Ouch");
+        } else {
         document.querySelector("body > main > div:nth-child(" + pos + ")").appendChild(character);
-        return pos;
+        }
+        break;
+
     }
 });
