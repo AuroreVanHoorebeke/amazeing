@@ -50,7 +50,7 @@ document.querySelector("body > main > div:nth-child(16)").appendChild(character)
 
 const lostArk = document.createElement("div");
 lostArk.className = "lostArk";
-document.querySelector("body > main > div:nth-child(26)").appendChild(lostArk);
+document.querySelector("body > main > div:nth-child(27)").appendChild(lostArk);
 
 let pos = 16;
 
@@ -61,7 +61,8 @@ document.body.addEventListener("keydown", function move(e) {
     case "ArrowLeft":
         pos-=1;
         if(document.querySelector("body > main > div:nth-child(" + pos + ")").classList.contains("wall")){
-            alert("Ouch");
+            console.log("Ouch");
+            pos+=1;
         } else {
         document.querySelector("body > main > div:nth-child(" + pos + ")").appendChild(character);
         }
@@ -70,7 +71,8 @@ document.body.addEventListener("keydown", function move(e) {
     case "ArrowRight":
         pos+=1;
         if(document.querySelector("body > main > div:nth-child(" + pos + ")").classList.contains("wall")){
-            alert("Ouch");
+            console.log("Ouch");
+            pos-=1;
         } else {
         document.querySelector("body > main > div:nth-child(" + pos + ")").appendChild(character);
         }
@@ -79,7 +81,8 @@ document.body.addEventListener("keydown", function move(e) {
     case "ArrowUp":
         pos -= 14;
         if(document.querySelector("body > main > div:nth-child(" + pos + ")").classList.contains("wall")){
-            alert("Ouch");
+            console.log("Ouch");
+            pos += 14;
         } else {
         document.querySelector("body > main > div:nth-child(" + pos + ")").appendChild(character);
         }
@@ -88,7 +91,8 @@ document.body.addEventListener("keydown", function move(e) {
     case "ArrowDown":
         pos += 14;
         if(document.querySelector("body > main > div:nth-child(" + pos + ")").classList.contains("wall")){
-            alert("Ouch");
+            console.log("Ouch");
+            pos -= 14;
         } else {
         document.querySelector("body > main > div:nth-child(" + pos + ")").appendChild(character);
         }
