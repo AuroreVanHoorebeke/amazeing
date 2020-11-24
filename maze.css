@@ -34,6 +34,7 @@ div {
 
 .end {
     background-image: url("./assets/textures/mountainRock.png");
+    background-size: contain;
 }
 
 .lostArk {
