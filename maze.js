@@ -113,16 +113,7 @@ document.body.addEventListener("keydown", function move(e) {
         if (document.querySelector("body > main > div:nth-child("+ y +") > div:nth-child("+ x +")").className.match("wall")){
             console.log("Ouch");
             x-=dx;
-        }
-        //  else if (document.querySelector("body > main > div:nth-child("+ y +") > div:nth-child("+ x +")").className.match("end")){
-        //     document.querySelector("body > main > div:nth-child("+ y +") > div:nth-child("+ x +")").appendChild(character);
-        //     x+=dx;
-        //     end.removeChild(lostArk);
-        //     alert("You won!");
-        //     score+=1;
-        //     alert("Score: " + score);
-
-         else {
+        } else {
         document.querySelector("body > main > div:nth-child("+ y +") > div:nth-child("+ x +")").appendChild(character);
         }};
 
