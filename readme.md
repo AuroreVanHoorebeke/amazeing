@@ -24,6 +24,8 @@ There are many ideas I didn"t have time to add to this project:
 - A score counter (instead of just an alert).
 - A sort of menu before and after the game.
 
+## Known issues  
+- Console error when user tries to cross maze's border.
 ## Appearance  
 ![My maze, level one](./assets/mazePreview.png)  
 Here's what it looks like!  
