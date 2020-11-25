@@ -20,7 +20,7 @@ const multiline =
 let lineArr = multiline.split('\n');
 console.log("before for loop");
 let tileArr = [];
-console.log(lineArr)
+
 
 for (let i = 0; i < lineArr.length; i++) { //corriger multiling.length-1
     const lineDiv = document.createElement("div");
@@ -52,8 +52,6 @@ for (let i = 0; i < lineArr.length; i++) { //corriger multiling.length-1
             tile.className = "end";
             tile.textContent = "";
             break;
-        case "\n": //delete cette ligne d'une manière ou d'une autre
-            tile.style.display = "none";
         };
     };
 }
@@ -61,11 +59,11 @@ for (let i = 0; i < lineArr.length; i++) { //corriger multiling.length-1
 //Character and end divs
 const character = document.createElement("div");
 character.className = "character";
-document.querySelector("body > main > div:nth-child(16)").appendChild(character);
+document.querySelector("body > main > div:nth-child(2) > div:nth-child(2)").appendChild(character);
 
- const lostArk = document.createElement("div");
- lostArk.className = "lostArk";
- document.querySelector("body > main > div:nth-child(27)").appendChild(lostArk);
+const lostArk = document.createElement("div");
+lostArk.className = "lostArk";
+document.querySelector("body > main > div:nth-child(2) > div:nth-child(13)").appendChild(lostArk);
 
 let pos = 16;
 let score = 0;

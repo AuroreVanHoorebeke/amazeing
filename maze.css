@@ -33,9 +33,7 @@ div {
 }
 
 .character {
-    /* background-image: url("./assets/textures/indianaJones.png"); */
-    background-color: yellow;
-    border-radius: 50%;
+    background-image: url("./assets/textures/indianaJones.png");
     position: absolute;
     background-size: contain; 
     background-repeat: no-repeat;
@@ -47,8 +45,8 @@ div {
     background-size: contain;
 }
 
-/* .lostArk {
+.lostArk {
     background-color: yellow;
     border-radius: 50%;
     position: absolute;
-} */
+}
