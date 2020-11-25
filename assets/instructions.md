@@ -6,7 +6,6 @@ Let's build a simple Maze program
 - Duration: **2-3 days**  
 - Team challenge: **solo**
 - Deadline: **25/11/2020 19:00**
-- [Submission form](https://forms.gle/UmTTfyF59kueUYhh7)
 
 ## Learning objectives
 
