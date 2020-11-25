@@ -14,9 +14,7 @@ I learned how to use event listeners to move a character with the keyboard's arr
 I used a 2d array as well to store the pattern and generate the maze.  
 
 ## The main challenge  
-It took me a big amount of time to change how I was drawing the board. I started with a simple array and then moved to a 2D array.
-
-# Known issues  
+It took me a big amount of time to change how I was drawing the board. I started with a simple array and then moved to a 2D array. 
 
 ## Things I wanted to add  
 There are many ideas I didn"t have time to add to this project:  

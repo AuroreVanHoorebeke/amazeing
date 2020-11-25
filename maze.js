@@ -27,16 +27,32 @@ const lvl2 =
 *.********************
 *...................T*`
 
-let lineArr = lvl2.split('\n');
-main.style.width = lineArr.length;
+const lvl3 =
+`********
+****S***
+****.***
+****.***
+****.***
+*......*
+*.****.*
+*..***.*
+*..***.*
+**.*****
+*T.*****
+********
+`
 
-let tileArr = [];
+let lineArr = lvl1.split('\n');
+// main.style.width = lineArr.length;
 
+// let tileArr = [];
+// console.log(tileArr)
 for (let i = 0; i < lineArr.length; i++) {
     const lineDiv = document.createElement("div");
     lineDiv.className = "lineDiv";
     main.appendChild(lineDiv);
 
+    // tileArr[i] = [];
     tileArr= lineArr[i].split('');
 
     for(let j=0; j < tileArr.length; j++){
@@ -44,6 +60,9 @@ for (let i = 0; i < lineArr.length; i++) {
         tile.className = "tile";
         tile.innerHTML = tileArr[j];
         lineDiv.appendChild(tile);
+
+        // tileArr[i][j] = tile;
+        // console.log(tileArr[i][j])
 
         switch (tileArr[j]) {
         case "*":
@@ -57,6 +76,8 @@ for (let i = 0; i < lineArr.length; i++) {
         case "S":
             tile.className = "start";
             tile.textContent = "";
+            // x = j;
+            // y = i;
             break;
         case "T":
             tile.className = "end";
