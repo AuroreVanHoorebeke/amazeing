@@ -45,7 +45,7 @@ for (let i = 0; i < lineArr.length; i++) { //corriger multiling.length-1
             tile.textContent = "";
             break;
         case "S":
-            tile.className = "origin";
+            tile.className = "start";
             tile.textContent = "";
             break;
         case "T":
@@ -57,67 +57,75 @@ for (let i = 0; i < lineArr.length; i++) { //corriger multiling.length-1
 }
 
 //Character and end divs
+const start = document.querySelector("body > main > div:nth-child(2) > div:nth-child(2)");
+const end = document.querySelector("body > main > div:nth-child(2) > div:nth-child(13)")
+
 const character = document.createElement("div");
 character.className = "character";
-document.querySelector("body > main > div:nth-child(2) > div:nth-child(2)").appendChild(character);
+start.appendChild(character);
 
 const lostArk = document.createElement("div");
 lostArk.className = "lostArk";
-document.querySelector("body > main > div:nth-child(2) > div:nth-child(13)").appendChild(lostArk);
+end.appendChild(lostArk);
 
-let pos = 16;
+let x = 2;
+let y = 2;
+let dy = 1; //dy = delta y
+let dx = 1; //dy : delta x
 let score = 0;
 
 //Event listener
 document.body.addEventListener("keydown", function move(e) {
-    // function checkWall (){} ; 
+
     function test(){console.log(e.code)};
     test(); 
     switch (e.code){
     case "ArrowLeft":
-        pos-=1;
-        if(document.querySelector("body > main > div:nth-child(" + pos + ")").classList.contains("wall")){
+        x-=dx;
+        if(document.querySelector("body > main > div:nth-child("+ y +") > div:nth-child("+ x +")").className.match("wall")){
             console.log("Ouch");
-            pos+=1;
+            x+=dx;
         } else {
-            document.querySelector("body > main > div:nth-child(" + pos + ")").appendChild(character);
+            document.querySelector("body > main > div:nth-child("+ y +") > div:nth-child("+ x +")").appendChild(character);
         }
         break;
 
     case "ArrowRight":
-        pos+=1;
-        if (document.querySelector("body > main > div:nth-child(" + pos + ")").classList.contains("wall")){
+        x+=dx;
+        if (document.querySelector("body > main > div:nth-child("+ y +") > div:nth-child("+ x +")").className.match("wall")){
             console.log("Ouch");
-            pos-=1;
-        } else if (document.querySelector("body > main > div:nth-child(" + pos + ")").classList.contains("end")){
-            document.querySelector("body > main > div:nth-child(" + pos + ")").appendChild(character);
-            pos+=1;
-            document.querySelector("body > main > div:nth-child(27)").removeChild(lostArk);
+            x-=dx;
+
+        } else if (document.querySelector("body > main > div:nth-child("+ y +") > div:nth-child("+ x +")").className.match("end")){
+            document.querySelector("body > main > div:nth-child("+ y +") > div:nth-child("+ x +")").appendChild(character);
+            x+=dx;
+            end.removeChild(lostArk);
             alert("You won!");
             score+=1;
             alert("Score: " + score);
+
         } else {
-        document.querySelector("body > main > div:nth-child(" + pos + ")").appendChild(character);
+        document.querySelector("body > main > div:nth-child("+ y +") > div:nth-child("+ x +")").appendChild(character);
         }
         break;
 
     case "ArrowUp":
-        pos -= 14;
-        if(document.querySelector("body > main > div:nth-child(" + pos + ")").classList.contains("wall")){
+        y -= dy;
+        if(document.querySelector("body > main > div:nth-child("+ y +") > div:nth-child("+ x +")").className.match("wall")){
             console.log("Ouch");
-            pos += 14;
+            y += dy;
         } else {
-        document.querySelector("body > main > div:nth-child(" + pos + ")").appendChild(character);
+        document.querySelector("body > main > div:nth-child("+ y +") > div:nth-child("+ x +")").appendChild(character);
         }
         break;
 
     case "ArrowDown":
-        pos += 14;
-        if(document.querySelector("body > main > div:nth-child(" + pos + ")").classList.contains("wall")){
+        y += dy;
+        if(document.querySelector("body > main > div:nth-child("+ y +") > div:nth-child("+ x +")").className.match("wall")){
             console.log("Ouch");
-            pos -= 14;
+            y -= dy;
         } else {
-        document.querySelector("body > main > div:nth-child(" + pos + ")").appendChild(character);
+        document.querySelector("body > main > div:nth-child("+ y +") > div:nth-child("+ x +")").appendChild(character);
         }
         break;
     }
