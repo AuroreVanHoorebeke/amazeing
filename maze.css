@@ -1,6 +1,7 @@
 main {
     width: 260px;
     display: flex;
+    flex-direction: column;
     flex-wrap: wrap;
 } 
 
@@ -8,6 +9,12 @@ div {
     width: 20px;
     height: 20px;
     display: flex;
+}
+
+.lineDiv{
+    width: 260px;
+    display: flex;
+    flex-direction: row;
 }
 
 .wall {
@@ -26,7 +33,10 @@ div {
 }
 
 .character {
-    background-image: url("./assets/textures/indianaJones.png");
+    /* background-image: url("./assets/textures/indianaJones.png"); */
+    background-color: yellow;
+    border-radius: 50%;
+    position: absolute;
     background-size: contain; 
     background-repeat: no-repeat;
     position: absolute;
@@ -37,8 +47,8 @@ div {
     background-size: contain;
 }
 
-.lostArk {
+/* .lostArk {
     background-color: yellow;
     border-radius: 50%;
     position: absolute;
-}
+} */
