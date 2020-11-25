@@ -1,8 +1,10 @@
- document.body.addEventListener("keydown", function (e) {
+document.body.addEventListener("keydown", function (e) {
     if(e.code == "F12"){
     alert("Noooooooooo don't open the console :'(");} });
 
+const body = document.querySelector("body")
 const main = document.querySelector("main");
+
 
 const multiline = 
 `***********.*
@@ -18,9 +20,9 @@ const multiline =
 *....********`;
 
 let lineArr = multiline.split('\n');
+main.style.width = lineArr.length;
 
 let tileArr = [];
-
 
 for (let i = 0; i < lineArr.length; i++) { //corriger multiling.length-1
     const lineDiv = document.createElement("div");
