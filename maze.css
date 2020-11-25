@@ -5,47 +5,58 @@ main {
 } 
 
 div {
-    /* width: 20px; */
-    /* height: 20px; */
+
     display: flex;
 }
+
 
 .lineDiv{
     /* width: 260px; */
     display: flex;
-    flex-direction: row;
 }
 
 .wall {
+    width: 20px;
+    height: 20px;
     background-image: url("./assets/textures/stone.png");
     background-size: contain;
 }
 
 .path {
+    width: 20px;
+    height: 20px;
     background-image: url("./assets/textures/mountainRock.png");
     background-size: contain;
 }
 
 .start {
+    width: 20px;
+    height: 20px;
     background-image: url("./assets/textures/mountainRock.png");
     background-size: contain;
 }
 
 .character {
     background-image: url("./assets/textures/indianaJones.png");
-    position: absolute;
-    background-size: contain; 
+    width: 20px;
+    height: 20px;
+    background-size: contain;
     background-repeat: no-repeat;
     position: absolute;
+    z-index: 2;
 }
 
 .end {
     background-image: url("./assets/textures/mountainRock.png");
     background-size: contain;
+    width: 20px;
+    height: 20px;
 }
 
 .lostArk {
     background-color: yellow;
     border-radius: 50%;
     position: absolute;
+    width: 20px;
+    height: 20px;
 }

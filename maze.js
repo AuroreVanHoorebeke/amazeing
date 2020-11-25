@@ -29,11 +29,10 @@ const lvl2 =
 
 let lineArr = lvl2.split('\n');
 main.style.width = lineArr.length;
-let mainWidth = document.querySelector("main").clientWidth;
 
 let tileArr = [];
 
-for (let i = 0; i < lineArr.length; i++) { //corriger multiling.length-1
+for (let i = 0; i < lineArr.length; i++) {
     const lineDiv = document.createElement("div");
     lineDiv.className = "lineDiv";
     main.appendChild(lineDiv);
@@ -45,8 +44,6 @@ for (let i = 0; i < lineArr.length; i++) { //corriger multiling.length-1
         tile.className = "tile";
         tile.innerHTML = tileArr[j];
         lineDiv.appendChild(tile);
-        tile.style.width = mainWidth/tileArr.length+"px";
-        tile.style.height = mainWidth/tileArr.length+"px";
 
         switch (tileArr[j]) {
         case "*":
@@ -70,8 +67,8 @@ for (let i = 0; i < lineArr.length; i++) { //corriger multiling.length-1
 }
 
 //Character and end divs
-const start = document.querySelector("body > main > div:nth-child(2) > div:nth-child(2)");
-const end = document.querySelector("body > main > div:nth-child(2) > div:nth-child(13)")
+const start = document.querySelector(".start");
+const end = document.querySelector(".end")
 
 
 const character = document.createElement("div");
