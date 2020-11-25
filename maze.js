@@ -18,7 +18,7 @@ const multiline =
 *....********`;
 
 let lineArr = multiline.split('\n');
-console.log("before for loop");
+
 let tileArr = [];
 
 
@@ -74,6 +74,7 @@ let dy = 1; //dy = delta y
 let dx = 1; //dy : delta x
 let score = 0;
 
+
 //Event listener
 document.body.addEventListener("keydown", function move(e) {
 
@@ -81,6 +82,7 @@ document.body.addEventListener("keydown", function move(e) {
     test(); 
     switch (e.code){
     case "ArrowLeft":
+        if(x>=2){
         x-=dx;
         if(document.querySelector("body > main > div:nth-child("+ y +") > div:nth-child("+ x +")").className.match("wall")){
             console.log("Ouch");
@@ -88,9 +90,11 @@ document.body.addEventListener("keydown", function move(e) {
         } else {
             document.querySelector("body > main > div:nth-child("+ y +") > div:nth-child("+ x +")").appendChild(character);
         }
+        };
         break;
 
     case "ArrowRight":
+        if(x<=tileArr.length-1){
         x+=dx;
         if (document.querySelector("body > main > div:nth-child("+ y +") > div:nth-child("+ x +")").className.match("wall")){
             console.log("Ouch");
@@ -106,20 +110,24 @@ document.body.addEventListener("keydown", function move(e) {
 
         } else {
         document.querySelector("body > main > div:nth-child("+ y +") > div:nth-child("+ x +")").appendChild(character);
+        };
         }
         break;
 
     case "ArrowUp":
+        if(y>=2){
         y -= dy;
         if(document.querySelector("body > main > div:nth-child("+ y +") > div:nth-child("+ x +")").className.match("wall")){
             console.log("Ouch");
             y += dy;
         } else {
         document.querySelector("body > main > div:nth-child("+ y +") > div:nth-child("+ x +")").appendChild(character);
-        }
+        };
+        };
         break;
 
     case "ArrowDown":
+        if(y<=lineArr.length-1){
         y += dy;
         if(document.querySelector("body > main > div:nth-child("+ y +") > div:nth-child("+ x +")").className.match("wall")){
             console.log("Ouch");
@@ -127,6 +135,7 @@ document.body.addEventListener("keydown", function move(e) {
         } else {
         document.querySelector("body > main > div:nth-child("+ y +") > div:nth-child("+ x +")").appendChild(character);
         }
+        };
         break;
     }
 });
