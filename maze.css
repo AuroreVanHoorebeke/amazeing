@@ -4,40 +4,33 @@ main {
     flex-wrap: wrap;
 } 
 
-div {
-
-    display: flex;
-}
-
-
 .lineDiv{
-    /* width: 260px; */
     display: flex;
 }
 
 .wall {
     width: 20px;
     height: 20px;
-    background-image: url("./assets/textures/stone.png");
+    background-image: url("./assets/textures/IndianaJones/stone.png");
     background-size: contain;
 }
 
 .path {
     width: 20px;
     height: 20px;
-    background-image: url("./assets/textures/mountainRock.png");
+    background-image: url("./assets/textures/IndianaJones/mountainRock.png");
     background-size: contain;
 }
 
 .start {
     width: 20px;
     height: 20px;
-    background-image: url("./assets/textures/mountainRock.png");
+    background-image: url("./assets/textures/IndianaJones/mountainRock.png");
     background-size: contain;
 }
 
 .character {
-    background-image: url("./assets/textures/indianaJones.png");
+    background-image: url("./assets/textures/IndianaJones/indianaJones.png");
     width: 20px;
     height: 20px;
     background-size: contain;
@@ -47,14 +40,14 @@ div {
 }
 
 .end {
-    background-image: url("./assets/textures/mountainRock.png");
+    background-image: url("./assets/textures/IndianaJones/mountainRock.png");
     background-size: contain;
     width: 20px;
     height: 20px;
 }
 
 .lostArk {
-    background-image: url("./assets/textures/lostArk.png");
+    background-image: url("./assets/textures/IndianaJones/lostArk.png");
     background-size: contain;
     background-repeat: no-repeat;
     position: absolute;
