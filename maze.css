@@ -5,13 +5,13 @@ main {
 } 
 
 div {
-    width: 20px;
-    height: 20px;
+    /* width: 20px; */
+    /* height: 20px; */
     display: flex;
 }
 
 .lineDiv{
-    width: 260px;
+    /* width: 260px; */
     display: flex;
     flex-direction: row;
 }

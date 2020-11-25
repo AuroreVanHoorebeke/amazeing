@@ -2,11 +2,11 @@ document.body.addEventListener("keydown", function (e) {
     if(e.code == "F12"){
     alert("Noooooooooo don't open the console :'(");} });
 
-const body = document.querySelector("body")
+const body = document.querySelector("body");
 const main = document.querySelector("main");
+const div = document.querySelectorAll("div");
 
-
-const multiline = 
+const lvl1 = 
 `***********.*
 *S.....**.*.T
 *****.....*.*
@@ -19,8 +19,17 @@ const multiline =
 *.******...**
 *....********`;
 
-let lineArr = multiline.split('\n');
+const lvl2 =
+`**********************
+*..S.................*
+********************.*
+*....................*
+*.********************
+*...................T*`
+
+let lineArr = lvl2.split('\n');
 main.style.width = lineArr.length;
+let mainWidth = document.querySelector("main").clientWidth;
 
 let tileArr = [];
 
@@ -36,6 +45,8 @@ for (let i = 0; i < lineArr.length; i++) { //corriger multiling.length-1
         tile.className = "tile";
         tile.innerHTML = tileArr[j];
         lineDiv.appendChild(tile);
+        tile.style.width = mainWidth/tileArr.length+"px";
+        tile.style.height = mainWidth/tileArr.length+"px";
 
         switch (tileArr[j]) {
         case "*":
@@ -61,6 +72,7 @@ for (let i = 0; i < lineArr.length; i++) { //corriger multiling.length-1
 //Character and end divs
 const start = document.querySelector("body > main > div:nth-child(2) > div:nth-child(2)");
 const end = document.querySelector("body > main > div:nth-child(2) > div:nth-child(13)")
+
 
 const character = document.createElement("div");
 character.className = "character";
