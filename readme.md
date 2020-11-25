@@ -19,10 +19,11 @@ It took me a big amount of time to change how I was drawing the board. I started
 
 ## Things I wanted to add  
 There are many ideas I didn"t have time to add to this project:  
-- A theme selector, to change the maze's theme. Indiana Jones is awesome, but choosing another theme for the maze is even better!
+- A theme selector, to change the maze's theme. Indiana Jones is awesome, but choosing another theme for the maze is even better! (a branch was created after the submission time)
 - A timer to know how long it took to solve the maze.
 - A score counter (instead of just an alert).
 - A sort of menu before and after the game.
+- I wanted to clean the code (created a "refactor" branch but didn't do much because the code wasn't done yet).
 
 ## Known issues  
 - Console error when user tries to cross maze's border.
