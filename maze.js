@@ -1,3 +1,7 @@
+ document.body.addEventListener("keydown", function (e) {
+    if(e.code == "F12"){
+    alert("Noooooooooo don't open the console :'(");} });
+
 const main = document.querySelector("main");
 
 const multiline = 
@@ -13,16 +17,25 @@ const multiline =
 *.******...**
 *....********`;
 
-multiline.split('\n');
+let lineArr = multiline.split('\n');
 
-for (let i = 0; i < multiline.length; i++) { //corriger multiling.length-1
-    const tile = document.createElement("div");
-    tile.className = "tile";
-    main.appendChild(tile);
+let tileArr = [];
 
-    tile.textContent = multiline[i].split('');
 
-    switch (multiline[i]) {
+for (let i = 0; i < lineArr.length; i++) { //corriger multiling.length-1
+    const lineDiv = document.createElement("div");
+    lineDiv.className = "lineDiv";
+    main.appendChild(lineDiv);
+
+    tileArr= lineArr[i].split('');
+
+    for(let j=0; j < tileArr.length; j++){
+        const tile = document.createElement("div");
+        tile.className = "tile";
+        tile.innerHTML = tileArr[j];
+        lineDiv.appendChild(tile);
+
+        switch (tileArr[j]) {
         case "*":
             tile.className = "wall";
             tile.textContent = "";
@@ -32,78 +45,104 @@ for (let i = 0; i < multiline.length; i++) { //corriger multiling.length-1
             tile.textContent = "";
             break;
         case "S":
-            tile.className = "origin";
+            tile.className = "start";
             tile.textContent = "";
             break;
         case "T":
             tile.className = "end";
             tile.textContent = "";
             break;
-        case '\n': //delete cette ligne d'une manière ou d'une autre
-            tile.style.display = "none";
-    }
-};
+        };
+    };
+}
+
 //Character and end divs
+const start = document.querySelector("body > main > div:nth-child(2) > div:nth-child(2)");
+const end = document.querySelector("body > main > div:nth-child(2) > div:nth-child(13)")
+
 const character = document.createElement("div");
 character.className = "character";
-document.querySelector("body > main > div:nth-child(16)").appendChild(character);
+start.appendChild(character);
 
- const lostArk = document.createElement("div");
- lostArk.className = "lostArk";
- document.querySelector("body > main > div:nth-child(27)").appendChild(lostArk);
+const lostArk = document.createElement("div");
+lostArk.className = "lostArk";
+end.appendChild(lostArk);
 
-let pos = 16;
+let x = 2;
+let y = 2;
+let dy = 1; //dy = delta y
+let dx = 1; //dy : delta x
 let score = 0;
+
 
 //Event listener
 document.body.addEventListener("keydown", function move(e) {
-    // function checkWall (){} ;  
+
+    function test(){console.log(e.code)};
+    test(); 
     switch (e.code){
     case "ArrowLeft":
-        pos-=1;
-        if(document.querySelector("body > main > div:nth-child(" + pos + ")").classList.contains("wall")){
+        if(x>=2){
+        x-=dx;
+        if(document.querySelector("body > main > div:nth-child("+ y +") > div:nth-child("+ x +")").className.match("wall")){
             console.log("Ouch");
-            pos+=1;
+            x+=dx;
         } else {
-            document.querySelector("body > main > div:nth-child(" + pos + ")").appendChild(character);
+            document.querySelector("body > main > div:nth-child("+ y +") > div:nth-child("+ x +")").appendChild(character);
         }
+        };
         break;
 
     case "ArrowRight":
-        pos+=1;
-        if (document.querySelector("body > main > div:nth-child(" + pos + ")").classList.contains("wall")){
+        if(x<=tileArr.length-1){
+        x+=dx;
+        if (document.querySelector("body > main > div:nth-child("+ y +") > div:nth-child("+ x +")").className.match("wall")){
             console.log("Ouch");
-            pos-=1;
-        } else if (document.querySelector("body > main > div:nth-child(" + pos + ")").classList.contains("end")){
-            document.querySelector("body > main > div:nth-child(" + pos + ")").appendChild(character);
-            pos+=1;
-            document.querySelector("body > main > div:nth-child(27)").removeChild(lostArk);
-            alert("You won!");
-            score+=1;
-            alert("Score: " + score);
-        } else {
-        document.querySelector("body > main > div:nth-child(" + pos + ")").appendChild(character);
+            x-=dx;
         }
+        //  else if (document.querySelector("body > main > div:nth-child("+ y +") > div:nth-child("+ x +")").className.match("end")){
+        //     document.querySelector("body > main > div:nth-child("+ y +") > div:nth-child("+ x +")").appendChild(character);
+        //     x+=dx;
+        //     end.removeChild(lostArk);
+        //     alert("You won!");
+        //     score+=1;
+        //     alert("Score: " + score);
+
+         else {
+        document.querySelector("body > main > div:nth-child("+ y +") > div:nth-child("+ x +")").appendChild(character);
+        }};
+
         break;
 
     case "ArrowUp":
-        pos -= 14;
-        if(document.querySelector("body > main > div:nth-child(" + pos + ")").classList.contains("wall")){
+        if(y>=2){
+        y -= dy;
+        if(document.querySelector("body > main > div:nth-child("+ y +") > div:nth-child("+ x +")").className.match("wall")){
             console.log("Ouch");
-            pos += 14;
+            y += dy;
         } else {
-        document.querySelector("body > main > div:nth-child(" + pos + ")").appendChild(character);
-        }
+        document.querySelector("body > main > div:nth-child("+ y +") > div:nth-child("+ x +")").appendChild(character);
+        };
+        };
         break;
 
     case "ArrowDown":
-        pos += 14;
-        if(document.querySelector("body > main > div:nth-child(" + pos + ")").classList.contains("wall")){
+        if(y<=lineArr.length-1){
+        y += dy;
+        if(document.querySelector("body > main > div:nth-child("+ y +") > div:nth-child("+ x +")").className.match("wall")){
             console.log("Ouch");
-            pos -= 14;
+            y -= dy;
         } else {
-        document.querySelector("body > main > div:nth-child(" + pos + ")").appendChild(character);
+        document.querySelector("body > main > div:nth-child("+ y +") > div:nth-child("+ x +")").appendChild(character);
         }
+        };
         break;
     }
+    if (document.querySelector("body > main > div:nth-child("+ y +") > div:nth-child("+ x +")").className.match("end")){
+        document.querySelector("body > main > div:nth-child("+ y +") > div:nth-child("+ x +")").appendChild(character);
+        x+=dx;
+        end.removeChild(lostArk);
+        alert("You won!");
+        score+=1;
+        alert("Score: " + score);}
 });

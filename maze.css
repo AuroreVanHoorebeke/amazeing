@@ -1,6 +1,7 @@
 main {
     width: 260px;
     display: flex;
+    flex-direction: column;
     flex-wrap: wrap;
 } 
 
@@ -8,6 +9,12 @@ div {
     width: 20px;
     height: 20px;
     display: flex;
+}
+
+.lineDiv{
+    width: 260px;
+    display: flex;
+    flex-direction: row;
 }
 
 .wall {
@@ -20,13 +27,14 @@ div {
     background-size: contain;
 }
 
-.origin {
+.start {
     background-image: url("./assets/textures/mountainRock.png");
     background-size: contain;
 }
 
 .character {
     background-image: url("./assets/textures/indianaJones.png");
+    position: absolute;
     background-size: contain; 
     background-repeat: no-repeat;
     position: absolute;
