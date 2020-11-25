@@ -46,7 +46,20 @@ const lvl3 =
 ********
 `
 
-let levels = [lvl1, lvl2, lvl3];
+const lvl4 =
+`********************
+*....****S.......***
+*.**.****.******.***
+*.*.........****.***
+*.*.*********.**.***
+*.*******.....**.***
+*.*******.******.***
+*.***............***
+*.******************
+*T******************
+********************`
+
+let levels = [lvl1, lvl2, lvl3, lvl4];
 
 let mazeArr = [];
 let tileArr = [];
@@ -161,8 +174,7 @@ document.body.addEventListener("keydown", function move(e) {
             break;
 
         case "ArrowDown":
-
-            if (y <= tileArr.length - 1) {
+            
                 y++;
                 destination = mazeArr[y][x];
 
@@ -171,7 +183,6 @@ document.body.addEventListener("keydown", function move(e) {
                     y--;
                     destination = mazeArr[y][x];
                 }
-            };
             break;
     }
     destination.appendChild(player);
