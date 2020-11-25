@@ -132,7 +132,6 @@ document.body.addEventListener("keydown", function move(e) {
     switch (e.code) {
         case "ArrowLeft":
 
-            if (x >= 2) {
                 x--;
                 destination = mazeArr[y][x];
 
@@ -141,12 +140,11 @@ document.body.addEventListener("keydown", function move(e) {
                     x++;
                     destination = mazeArr[y][x];
                 }
-            };
+
             break;
 
         case "ArrowRight":
 
-            if (x <= tileArr.length - 1) {
                 x++;
                 destination = mazeArr[y][x];
 
@@ -155,12 +153,11 @@ document.body.addEventListener("keydown", function move(e) {
                     x--;
                     destination = mazeArr[y][x];
                 }
-            };
+
             break;
 
         case "ArrowUp":
 
-            if (y >= 1) {
                 console.log(y);
                 y--;
                 destination = mazeArr[y][x];
@@ -170,11 +167,11 @@ document.body.addEventListener("keydown", function move(e) {
                     y++;
                     destination = mazeArr[y][x];
                 }
-            };
+
             break;
 
         case "ArrowDown":
-            
+
                 y++;
                 destination = mazeArr[y][x];
 
