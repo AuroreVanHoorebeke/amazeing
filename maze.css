@@ -54,8 +54,9 @@ div {
 }
 
 .lostArk {
-    background-color: yellow;
-    border-radius: 50%;
+    background-image: url("./assets/textures/lostArk.png");
+    background-size: contain;
+    background-repeat: no-repeat;
     position: absolute;
     width: 20px;
     height: 20px;
