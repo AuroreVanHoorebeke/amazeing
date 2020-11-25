@@ -6,6 +6,8 @@ const body = document.querySelector("body");
 const main = document.querySelector("main");
 const div = document.querySelectorAll("div");
 
+let lvl = 0;
+
 const lvl1 = 
 `***********.*
 *S.....**.*.T
@@ -42,17 +44,22 @@ const lvl3 =
 ********
 `
 
-let lineArr = lvl1.split('\n');
-// main.style.width = lineArr.length;
+let levels = [lvl1, lvl2, lvl3];
 
-// let tileArr = [];
-// console.log(tileArr)
+let mazeArr = [];
+let tileArr = [];
+let x;
+let y;
+
+function levelling(){
+let lineArr = levels[lvl].split('\n');
+
 for (let i = 0; i < lineArr.length; i++) {
     const lineDiv = document.createElement("div");
     lineDiv.className = "lineDiv";
     main.appendChild(lineDiv);
 
-    // tileArr[i] = [];
+    mazeArr[i] = [];
     tileArr= lineArr[i].split('');
 
     for(let j=0; j < tileArr.length; j++){
@@ -61,8 +68,7 @@ for (let i = 0; i < lineArr.length; i++) {
         tile.innerHTML = tileArr[j];
         lineDiv.appendChild(tile);
 
-        // tileArr[i][j] = tile;
-        // console.log(tileArr[i][j])
+        mazeArr[i][j] = tile;
 
         switch (tileArr[j]) {
         case "*":
@@ -76,96 +82,138 @@ for (let i = 0; i < lineArr.length; i++) {
         case "S":
             tile.className = "start";
             tile.textContent = "";
-            // x = j;
-            // y = i;
+
+            const character = document.createElement("div");
+            character.className = "character";
+            tile.appendChild(character);
+            x = j;
+            y = i;
             break;
         case "T":
             tile.className = "end";
             tile.textContent = "";
+
+            const lostArk = document.createElement("div");
+            lostArk.className = "lostArk";
+            tile.appendChild(lostArk);
             break;
         };
     };
 }
+}
 
-//Character and end divs
-const start = document.querySelector(".start");
-const end = document.querySelector(".end")
-
-
-const character = document.createElement("div");
-character.className = "character";
-start.appendChild(character);
-
-const lostArk = document.createElement("div");
-lostArk.className = "lostArk";
-end.appendChild(lostArk);
-
-let x = 2;
-let y = 2;
-let dy = 1; //dy = delta y
-let dx = 1; //dy : delta x
 let score = 0;
-
 
 //Event listener
 document.body.addEventListener("keydown", function move(e) {
 
     function test(){console.log(e.code)};
     test(); 
+    let destination;
+    const player = document.querySelector(".character");
+
     switch (e.code){
     case "ArrowLeft":
-        if(x>=2){
-        x-=dx;
-        if(document.querySelector("body > main > div:nth-child("+ y +") > div:nth-child("+ x +")").className.match("wall")){
+        // if(x>=2){
+        // x-=dx;
+        // if(document.querySelector("body > main > div:nth-child("+ y +") > div:nth-child("+ x +")").className.match("wall")){
+        //     console.log("Ouch");
+        //     x+=dx;
+        // } else {
+        //     document.querySelector("body > main > div:nth-child("+ y +") > div:nth-child("+ x +")").appendChild(character);
+        // }
+        // };
+        x--;
+        destination = mazeArr[y][x];
+
+        if(destination.className.match("wall")){
             console.log("Ouch");
-            x+=dx;
-        } else {
-            document.querySelector("body > main > div:nth-child("+ y +") > div:nth-child("+ x +")").appendChild(character);
+            x++;
+            destination = mazeArr[y][x];
         }
-        };
         break;
 
     case "ArrowRight":
-        if(x<=tileArr.length-1){
-        x+=dx;
-        if (document.querySelector("body > main > div:nth-child("+ y +") > div:nth-child("+ x +")").className.match("wall")){
-            console.log("Ouch");
-            x-=dx;
-        } else {
-        document.querySelector("body > main > div:nth-child("+ y +") > div:nth-child("+ x +")").appendChild(character);
-        }};
+        // if(x<=tileArr.length-1){
+        // x+=dx;
+        // if (document.querySelector("body > main > div:nth-child("+ y +") > div:nth-child("+ x +")").className.match("wall")){
+        //     console.log("Ouch");
+        //     x-=dx;
+        // } else {
+        // document.querySelector("body > main > div:nth-child("+ y +") > div:nth-child("+ x +")").appendChild(character);
+        // }};
+        x++;
+        destination = mazeArr[y][x];
 
+        if(destination.className.match("wall")){
+            console.log("Ouch");
+            x--;
+            destination = mazeArr[y][x];
+        }
         break;
 
     case "ArrowUp":
-        if(y>=2){
-        y -= dy;
-        if(document.querySelector("body > main > div:nth-child("+ y +") > div:nth-child("+ x +")").className.match("wall")){
+        // if(y>=2){
+        // y -= dy;
+        // if(document.querySelector("body > main > div:nth-child("+ y +") > div:nth-child("+ x +")").className.match("wall")){
+        //     console.log("Ouch");
+        //     y += dy;
+        // } else {
+        // document.querySelector("body > main > div:nth-child("+ y +") > div:nth-child("+ x +")").appendChild(character);
+        // };
+        // };
+        y--;
+        destination = mazeArr[y][x];
+
+        if(destination.className.match("wall")){
             console.log("Ouch");
-            y += dy;
-        } else {
-        document.querySelector("body > main > div:nth-child("+ y +") > div:nth-child("+ x +")").appendChild(character);
-        };
-        };
+            y++;
+            destination = mazeArr[y][x];
+        }
         break;
 
     case "ArrowDown":
-        if(y<=lineArr.length-1){
-        y += dy;
-        if(document.querySelector("body > main > div:nth-child("+ y +") > div:nth-child("+ x +")").className.match("wall")){
+        // if(y<=lineArr.length-1){
+        // y += dy;
+        // if(document.querySelector("body > main > div:nth-child("+ y +") > div:nth-child("+ x +")").className.match("wall")){
+        //     console.log("Ouch");
+        //     y -= dy;
+        // } else {
+        // document.querySelector("body > main > div:nth-child("+ y +") > div:nth-child("+ x +")").appendChild(character);
+        // }
+        // };
+        y++;
+        destination = mazeArr[y][x];
+
+        if(destination.className.match("wall")){
             console.log("Ouch");
-            y -= dy;
-        } else {
-        document.querySelector("body > main > div:nth-child("+ y +") > div:nth-child("+ x +")").appendChild(character);
+            y--;
+            destination = mazeArr[y][x];
         }
-        };
         break;
     }
-    if (document.querySelector("body > main > div:nth-child("+ y +") > div:nth-child("+ x +")").className.match("end")){
-        document.querySelector("body > main > div:nth-child("+ y +") > div:nth-child("+ x +")").appendChild(character);
-        x+=dx;
-        end.removeChild(lostArk);
+    destination.appendChild(player);
+    // if (document.querySelector("body > main > div:nth-child("+ y +") > div:nth-child("+ x +")").className.match("end")){
+    //     document.querySelector("body > main > div:nth-child("+ y +") > div:nth-child("+ x +")").appendChild(character);
+    //     x+=dx;
+    //     end.removeChild(lostArk);
+    //     alert("You won!");
+    //     score+=1;
+    //     alert("Score: " + score);}
+
+    if (destination.className.match("end")){
+        destination.appendChild(player);
+        x = 0;
+        y = 0;
+        destination = mazeArr[y][x];
         alert("You won!");
         score+=1;
-        alert("Score: " + score);}
+        alert("Score: " + score);
+
+        main.innerHTML = "";
+        lvl++;
+        levelling();
+    };
+
 });
+levelling();
